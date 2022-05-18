@@ -1,5 +1,8 @@
 .App {
-  text-align: center;
+  text-align: left;
+  background-color: #282c34;
+  color: white;
+  font-size: calc(10px + 2vmin);
 }
 
 .App-logo {
@@ -20,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 4vmin);
   color: white;
 }
 
