@@ -16,15 +16,6 @@ P.getPokemonByName(['eevee', 'ditto']) // with Promise
 */
 
 export default function App() {
-  // onChnage Handler funtion
-  // with event parameter
-  const getInputValue = (event) => {
-    // show the user input value to console
-    //const userValue = event.target.value;
-
-    //console.log(userValue);
-  };
-
 
   return (
     <div>
@@ -44,12 +35,11 @@ export default function App() {
     </div>
   );
 
-
 }
 
 
 
-
+/*
 class Pokemon extends React.Component {
   render() {
     return (
@@ -61,4 +51,5 @@ class Pokemon extends React.Component {
   }
 }
 
-//export default Pokemon;
+export default Pokemon;
+*/
