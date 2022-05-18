@@ -1,11 +1,16 @@
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App-header">
-      Hello World
-    </div>
-  );
+
+class Pokemon extends React.Component {
+  render() {
+    return (
+      <div className="App-header">
+        Pokemon Info
+      </div>
+
+    );
+  }
 }
 
-export default App;
+export default Pokemon;
