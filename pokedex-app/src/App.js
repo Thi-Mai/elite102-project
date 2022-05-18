@@ -1,28 +1,16 @@
 import './App.css';
-import Pokedex from 'pokedex-promise-v2';
+import React from 'react';
 
 
-const P = new Pokedex();
+class Pokemon extends React.Component {
+  render() {
+    return (
+      <div className="App-header">
+        Pokemon Info
+      </div>
 
-P.getPokemonByName("golduck")
-.then((response) => {
-  console.log(response);
-})
-.catch((error) => {
-  console.log('There was an ERROR: ', error);
-});
-
-
-
-function App() {
-  return (
-    <div className="App-header">
-      Pokemon
-    </div>
-  );
-
+    );
+  }
 }
 
-export default App;
-
-
+export default Pokemon;
