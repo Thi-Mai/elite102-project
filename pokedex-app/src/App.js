@@ -2,7 +2,8 @@ import './App.css';
 import React from 'react';
 
 
-const url = 'https://pokeapi.co/api/v2/';
+const url = 'https://pokeapi.co/api/v2/pokemon/';
+var pokemonName = "";
 
 class Pokemon extends React.Component {
   constructor(props) {
@@ -13,36 +14,37 @@ class Pokemon extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async handleChange(event) {
+  handleChange(event) {
     this.setState({value: event.target.value});
 
-    var response = await fetch('https://pokeapi.co/api/v2/pokemon/pikachu');
+  }
+
+  async handleSubmit(event) {
+    pokemonName = this.state.value;
+    var response = await fetch(url + pokemonName);
 
     var data = await response.json()
 
     this.setState({...this.state, info: JSON.stringify(data) })
     console.log(response);
-
-  }
-
-  handleSubmit(event) {
-    alert('A pokemon was submitted: ' + this.state.value);
+    
     event.preventDefault();
+
   }
 
   render() {
 
-    var pokemonName = this.state.value;
+    pokemonName = this.state.value;
 
     return (
       <div>
   
-        <form className='App-input' onSubmit={this.handleSubmit}>
+        <form className='App-input'>
           <label>
               Pokemon search:
           <input type="text" value={this.state.value} onChange={this.handleChange}/>
          </label>
-        <input type="submit" value="Submit" />
+        <input type="button" value="Submit" onClick={this.handleSubmit}/>
         </form>
   
         <div className="App">
