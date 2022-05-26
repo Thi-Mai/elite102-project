@@ -21,12 +21,17 @@ class Pokemon extends React.Component {
 
   async handleSubmit(event) {
     pokemonName = this.state.value;
-    var response = await fetch(url + pokemonName);
 
-    var data = await response.json()
+    try {
+      var response = await fetch(url + pokemonName);
+      var data = await response.json()
+  
+      this.setState({...this.state, info: JSON.stringify(data) })
+      console.log(response);
 
-    this.setState({...this.state, info: JSON.stringify(data) })
-    console.log(response);
+    } catch (err) {
+      this.setState({...this.state, info: 'Nothing found' })
+    }
     
     event.preventDefault();
 
@@ -35,6 +40,7 @@ class Pokemon extends React.Component {
   render() {
 
     pokemonName = this.state.value;
+    var information = this.state.info;
 
     return (
       <div>
@@ -51,7 +57,7 @@ class Pokemon extends React.Component {
           <h1>Pokemon: {pokemonName}</h1>
           <p> Info: </p>
           <p>
-            {this.state.info}
+            {information}
           </p>
         </div>
   
