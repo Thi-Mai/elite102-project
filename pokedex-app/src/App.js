@@ -33,7 +33,7 @@ class Pokemon extends React.Component {
       this.setState({ info: data})
 
     } catch (err) {
-      this.setState({ info: {abilities: null}})
+      this.setState({ info: {name: null}})
     }
     
     event.preventDefault();
@@ -43,27 +43,60 @@ class Pokemon extends React.Component {
   render() {
 
     pokemonName = this.curText;
-    var {abilities} = this.state.info;
+    var {name, height, weight, types, abilities, moves} = this.state.info;
 
-    if(abilities) {
+    if(name) {
       return (
         <div>
     
           <form className='App-input'>
             <label>
-                Pokemon search:
+                Search:
             <input type="text" onChange={this.handleChange}/>
            </label>
           <input type="button" value="Submit" onClick={this.handleSubmit}/>
           </form>
     
-          <div className="App">
+          <div className="App-info">
             <h1>Pokemon: {pokemonName}</h1>
-            <p> Info: </p>
 
+            <p>
+              <h2>
+                General Info
+              </h2>
+              <p> Height (decimetres): {height}</p>
+              <p> Weight (hectograms): {weight}</p>
+              <p> Types:
+                {types.map((item, index) => (
+                  <p key={index+1}>{index+1}: {item.type.name}</p>
+                ))}
+              </p>
+            </p>
+
+            <p> 
+              <h2>
+                Abilities
+              </h2> 
+            
               {abilities.map((item, index) => (
-                <p key={index}>{index}: {item.ability.name}</p>
+                <p key={index+1}>{index+1}: {item.ability.name}</p>
               ))}
+
+            </p>
+
+            <p> 
+              <h2>
+               Moves
+              </h2> 
+
+              {moves.map((item, index) => (
+                <p key={index+1}>{index+1}: {item.move.name}</p>
+              ))}
+
+            </p>
+
+              
+
           </div>
     
         </div>
@@ -78,15 +111,14 @@ class Pokemon extends React.Component {
     
           <form className='App-input'>
             <label>
-                Pokemon search:
+                 Search for a pokemon:
             <input type="text" onChange={this.handleChange}/>
            </label>
           <input type="button" value="Submit" onClick={this.handleSubmit}/>
           </form>
     
-          <div className="App">
+          <div className="App-info">
             <h1>Pokemon:</h1>
-            <p> Info: </p>
             <p>
               {info}
             </p>
